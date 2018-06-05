@@ -1,0 +1,75 @@
+<layout name="layout" />
+<div class="about" >
+		<h2>
+			CSS3是CSS的最新标准，扩展自CSS2.1，完全兼容早期版本的CSS，CSS3中的新特性给页面带来新的功能特性和“modules”，这个分类节点就依次归纳总结CSS3新特性。
+		</h2>
+		<!--html-css begin-->
+		<volist name="info" id="val" >
+		<div>
+			<a class="htmlcss_a">
+			   {$val.title}
+			</a>
+			<!-- blog list begin-->
+		  <div class="blog-div" >
+			<a class="topimg topimg_html" href="blogdetail.html" >
+				<img src="{$val.titlepic }"  >
+			</a>
+			<label class="lable_content" >
+				<span class="words">
+					<label>
+						{$val.content}
+					
+					</label>
+				</span>
+				<a name="{$val.id}" onclick="browser(this,'htmlcss',5)" rel="nofollow" class="more-link">继续阅读 »</a>
+				<p class="read">
+		  			<span >
+		  				<i class="icon iconfont icon-touxiang" ></i>
+		     			<span>伍洁</span>
+		  			</span>
+		  			<span >
+		  				<i class="icon iconfont icon-huiyishiqueren_huabanfuben" ></i>
+		     			<span>2周前（03-02）</span>
+		  			</span>
+		  			<span >
+		  				<i class="icon iconfont icon-liulan" ></i>
+		     			<span>{$val.browser}浏览</span>
+		  			</span>
+		  			<span >
+		  				<a href="javascript:;" class="thumbs-up star" name="{$val.id}" onclick="star(this)" >
+		  					<i class="icon iconfont icon-buoumaotubiao16" ></i>
+		     				<span>{$val.star}个赞</span>
+		  				</a>
+		  			</span>
+		  		</p>
+			</label>
+		  </div>
+		 </volist>
+	<!-- blog list end-->
+</div>
+		<!--html-css end-->
+		
+		
+	</div>
+	<aside> 
+		<h2>博客分类</h2>
+		<ul>
+		  <li><a href="#">慢生活(3)</a></li>
+		  <li><a href="#">程序人生(25)</a></li>
+		  <li><a href="/">经典美文(39)</a></li>
+		</ul>
+		<h2>近期文章</h2>
+		<ul>
+		  <li><a href="/">女孩都有浪漫的小情怀</a></li>
+		  <li><a href="/">也许下个路口就会遇见希望</a></li>
+		  <li><a href="/">6月毕业季，祝福送给你</a></li>
+		  <li><a href="/">生活常有缺席的-可搞笑从来不缺席</a></li>
+		  <li><a href="/">为了一个不存在的梦，执念了那么多年</a></li>
+		</ul>
+		<h2>文章归档</h2>
+		<ul>
+		  <li><a href="/">2018 年一月</a></li>
+		  <li><a href="/">2018 年二月</a></li>
+		  <li><a href="/">2018 年三月</a></li>
+		</ul>
+	</aside>  

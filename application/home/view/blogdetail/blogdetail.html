@@ -1,0 +1,163 @@
+<layout name="layout" />
+ <div class="about">
+ 	<volist name="info" id="val">
+		 	<label class="blog_detail_lable">
+		 		<i class="icon iconfont icon-home"></i>
+		 		<span>></span>
+		 		<label class="blog_detail_header" >{$val.sign}</label>
+		 		<span>></span>
+		 		<label class="blog_detail_title">{$val.title}</label>
+		 	</label>
+		  	<p class="blog_p_title" >{$val.title}</p>
+		  	<label>
+		  		<i class="icon iconfont icon-rili vertical"  ></i>
+		  		<label>{$val.sign}</label>
+		  		<span class="margin-left-20">
+	  				<i class="icon iconfont icon-gerenyonghutouxiang vertical"  ></i>
+	     			<span>伍洁</span>
+	  			</span>
+	  			<span class="margin-left-20">
+	  				<i class="icon iconfont icon-huiyishiqueren_huabanfuben vertical"  ></i>
+	     			<span>7个月前（03-02）</span>
+	  			</span>
+	  			<span class="margin-left-20">
+	  				<i class="icon iconfont icon-liulan vertical" ></i>
+	     			<span>{$val.browser}浏览</span>
+	  			</span>
+	  			<span class="margin-left-20">
+	  				<i class="icon iconfont icon-pinglun vertical"  ></i>
+	     			<span>0个评论</span>
+	  			</span>
+		  	</label>
+		  	<div class="detail_content">
+		  		{$val.content}
+		  		
+		  	</div>
+		  	<!---->
+		  	<div class="div_like" >
+		  		<span class="span_like" >
+			  		<a href="#" class="blog_detail_a  thumbs-ups" >
+			  			<i class="icon iconfont icon-buoumaotubiao15 vertical"  ></i> 喜欢 (<span class="count">0</span>)
+			  		</a>
+		  		</span>
+		  		<span class="span_share" >
+			  		<a href="#" class="blog_detail_a share" >
+			  			<i class="icon iconfont icon-weibiaoti-  vertical"  ></i> 分享 (<span class="bds_count">0</span>)
+			  		</a>
+			  		<div>
+			  			<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare share action-popover"  >
+							<a class="bds_tsina"></a>
+							<a class="bds_qzone"></a>
+							<a class="bds_tqq"></a>
+							<a class="bds_renren"></a>
+							<span class="bds_more"></span>
+						</div>
+			  		</div>
+		  		</span>
+		  	</div>
+		  	<!--<div>
+		  		<img src='http://www.xuechenlei.com/wp-content/uploads/myimg/b_0001.gif' style="vertical-align: middle;" />
+		  		<label style="margin-left: 5px;margin-right: 5px;"> 润润</label>
+		  		<span style="color: wheat;">发表我的评论</span>
+		  	</div>
+		  	<div  class="reply_text" style="margin-top: 10px;" >
+			 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" id="comment" cols="100%" rows="3" tabindex="1"  >
+				</textarea>
+			<div>
+			<button class="btn-sure">确定</button><button class="btn_cancle" >取消</button></div></div>-->
+			<!--<div class="line_height">
+	  			<span class="messge-pall-left" >发表我的评论</span>
+	  			<span class="messge-pall-right" >
+	  				<button class="btn comment_btn">取消评论</button>
+	  			</span>
+	  		</div>
+	  		<div class="comt message-boths" >
+		  		
+		  		<textarea placeholder="来都来了，说点什么吧…" style="width: 100%;min-height: 30px;" class="input-block-level comt-area" name="editor" id="editor" cols="100%" rows="3" tabindex="1"  >
+		  			
+		  		</textarea>
+		  	</div>
+		  	<div class="margin-top-10 emotion-height" >
+		  		<span class="messge-pall-left  emoticon">
+		  			<i class="icon iconfont  icon-biaoqing">表情</i>
+		  		</span>
+		  		<label class="messge-pall-right message-reply">
+		  			<input type="checkbox" name="comment_blog_notify"    class="vertical"  >
+		  			有人回复及时通知我
+		  			<button class="btn"  name="submit" id="submits" tabindex="5" >
+		  				
+		  				<i class="icon iconfont icon-3tuihuanhuozhengcegouxuan" class="vertical"  style="font-size: 16px;"  ></i> 
+		  				  <label style="position: relative;top: -2px;" > 提交评论 	</label>
+		  			</button>
+		  			
+		  		</label>
+		  	</div>
+		  	<div class="prompt" style="display: none;"  >
+		  		<p style="float: right;color: red;font-size: 16px;padding-right: 80px;">请填写昵称和邮箱</p>
+		  	</div>
+		  	<div class="blog_info">
+		  		<span style="text-align: center;" >
+					<h4>hello！你需要填写昵称和邮箱哦(*^__^*) </h4>
+				</span>
+				<span >
+					<ul style="text-align: center;margin-top: 20px;">
+						<li class="line_height message-margin">
+							<label class="input_lable" >昵称（必填）:</label>
+							<input type="text" name="name" class="input_text name" placeholder="昵称..." />
+						</li>
+						<li class="line_height message-margin">
+							<label class="input_lable">邮箱（必填）:</label>
+							<input type="text" name="email" class="input_text email" placeholder="邮箱..." />
+						</li>
+						<li class="line_height message-margin">
+							<label class="input_lable">网址:</label>
+							<input type="text" name="website" class="input_text website" placeholder="网址..." />
+						</li>
+						
+					</ul>
+				</span>
+		  		
+		  	</div>
+			-->
+			
+		  </div>
+		  
+		 </volist>
+		<aside> 
+			<h2>博客分类</h2>
+			<ul>
+			  <li><a href="">慢生活</a></li>
+			  <li><a href="">程序人生</a></li>
+			  <li><a href="">经典美文</a></li>
+			</ul>
+			<h2>近期文章</h2>
+			<ul>
+			  <li><a href="/">女孩都有浪漫的小情怀</a></li>
+			  <li><a href="/">也许下个路口就会遇见希望</a></li>
+			  <li><a href="/">6月毕业季，祝福送给你</a></li>
+			  <li><a href="/">生活常有缺席的-可搞笑从来不缺席</a></li>
+			  <li><a href="/">为了一个不存在的梦，执念了那么多年</a></li>
+			</ul>
+			<h2>文章归档</h2>
+			<ul>
+			  <li><a href="/">2018 年一月</a></li>
+			  <li><a href="/">2018 年二月</a></li>
+			  <li><a href="/">2018 年三月</a></li>
+			</ul>
+
+		</aside>
+		<!--分享到微博qq等等的代码-->
+		<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script>
+		<script type="text/javascript" id="bdshell_js"></script>
+		<script type="text/javascript">
+		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+		</script>
+		<script type="text/javascript">
+			$('.span_share').hover(function(){
+				$('.action-popover').css('display','block')
+			},function(){
+				$('.action-popover').css('display','none')
+			})
+		</script>
+<script type="text/javascript" src="__PUBLIC__/js/message.js" ></script>
+		

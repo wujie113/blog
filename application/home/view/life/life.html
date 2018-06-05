@@ -1,0 +1,59 @@
+<layout name="layout"  />
+ <div class="pre_text" >
+	<div id="scrollBox">
+	    <ul id="con1">
+	        <li>不是懒惰,放慢速度不是拖延时间<li>
+	        <li>放慢速度,可以让我们在生活中寻找平衡<li>
+	        <li>让我们一起同时间赛跑<li>
+	        <li>女程序员的日常生活<li>
+	      </ul>
+	    <ul id="con2"></ul>
+	</div>
+</div>
+<div class="blog"  >
+	<volist name="info" id="val" >
+ <div class="blog-div" >
+	  	<h2><a href="#">{$val.title}</a></h2>
+	  	<p class="datetime">{$val.create_time}</p>
+		<a class="topimg" href="#" >
+			<img src="{$val.titlepic }"  >
+		</a>
+		<label class="lable_content" >
+			<span class="words">
+				<label>
+					{$val.content}
+				
+				</label>
+			</span>
+			<a name="{$val.id}" onclick="browser(this,'life',3)"  rel="nofollow" class="more-link">继续阅读 »</a>
+			<p class="read">
+	  			<span >
+	  				<i class="icon iconfont icon-touxiang" ></i>
+	     			<span>伍洁</span>
+	  			</span>
+	  			<span >
+	  				<i class="icon iconfont icon-huiyishiqueren_huabanfuben" ></i>
+	     			<span>7个月前（03-02）</span>
+	  			</span>
+	  			<span >
+	  				<i class="icon iconfont icon-liulan" ></i>
+	     			<span>{$val.browser}浏览</span>
+	  			</span>
+	  			<span >
+	  				<a href="javascript:;" class="thumbs-up star" name="{$val.id}" onclick="star(this)" >
+	  					<i class="icon iconfont icon-buoumaotubiao16" ></i>
+	     				<span>{$val.star}个赞</span>
+	  				</a>
+	  			</span>
+	  		</p>
+		</label>
+	 </div>
+	 <hr />
+	 </volist>
+ <!-- blog list end-->
+  </div>
+  
+  <aside>
+  	jbojkj
+  </aside>
+  <script type="text/javascript" src="__PUBLIC__/js/pre.js" ></script>

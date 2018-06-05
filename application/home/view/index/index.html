@@ -1,0 +1,86 @@
+<layout name="layout" />
+ <div class="blog">
+<!-- blog list begin-->
+	 <volist name="info" id="val">
+	  <div class="blog-div" >
+	  	<h2><a href="#">{$val.title}</a></h2>
+	  	<p class="datetime">{$val.create_time}</p>
+		<a class="topimg"  >
+			<img src="{$val.titlepic }"  >
+		</a>
+		<label class="lable_content" >
+			<span class="words">
+				<label>
+				{$val.content}
+				
+				</label>
+			</span>
+			<a   rel="nofollow" class="more-link " name="{$val.id}" onclick="browser(this,'index',1)"  >继续阅读 »</a>
+			<p class="read">
+	  			<span >
+	  				<i class="icon iconfont icon-touxiang" ></i>
+	     			<span>伍洁</span>
+	  			</span>
+	  			<span >
+	  				<i class="icon iconfont icon-huiyishiqueren_huabanfuben" ></i>
+	     			<span>{$val.update_time}</span>
+	  			</span>
+	  			<span >
+	  				<i class="icon iconfont icon-liulan" ></i>
+	     			<span>{$val.browser}浏览</span>
+	  			</span>
+	  			<span  >
+	  				<a href="javascript:;" class="thumbs-up  star" name="{$val.id}" onclick="star(this)" >
+	  					<i class="icon iconfont icon-buoumaotubiao16" ></i>
+	     				<span>{$val.star}个赞</span>
+	  				</a>
+	  			</span>
+	  		</p>
+		</label>
+	 </div>
+</volist>
+ <!-- blog list end-->
+ 
+
+  </div>
+<aside> 
+	<h2>博客分类</h2>
+	<ul>
+	  <li><a href="">慢生活( {$slowlife} )</a></li>
+	  <li><a href="">程序人生({$belles})</a></li>
+	  <li><a href="">技术探讨({$program})</a></li>
+	  <li><a href="">html({$html})</a></li>
+	</ul>
+	<h2>近期文章</h2>
+	<ul>
+	  <li><a href="">{$val.title}</a></li>
+	  <!--<li><a href="">也许下个路口就会遇见希望</a></li>
+	  <li><a href="">6月毕业季，祝福送给你</a></li>
+	  <li><a href="">生活常有缺席的-可搞笑从来不缺席</a></li>
+	  <li><a href="">为了一个不存在的梦，执念了那么多年</a></li>-->
+	</ul>
+	<h2>文章归档</h2>
+	<ul>
+	  <li><a href="">2018 年一月</a></li>
+	  <li><a href="">2018 年二月</a></li>
+	  <li><a href="">2018 年三月</a></li>
+	</ul>
+	<h2>网站统计</h2>
+	<ul style="color: #fff;">
+	  <li>
+	  		文章总数：{$counts} 篇
+	  </li>
+	  <li>
+	  	评论数目：106 条
+	  </li>
+	  <li>
+	  	建站日期：2016-06-01
+	  </li>
+	  <li>
+	  	运行天数：671 天
+	  </li>
+	  <li>
+	  	最后更新：2018-4-3
+	  </li>
+	</ul>
+</aside>  

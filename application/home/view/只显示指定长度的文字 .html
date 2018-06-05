@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+	</head>
+	<body>
+		<div class="emp">
+			<a>解决欧尼偶奇偶奇偶进空间哦靠接口解决欧尼偶奇偶奇偶进空间哦靠接口解决欧尼偶奇偶奇偶进空间哦靠接口解决欧尼偶奇偶奇偶进空间哦靠接口
+			解决欧尼偶奇偶奇偶进空间哦靠接口解决欧尼偶奇偶奇偶进空间哦靠接口解决欧尼偶奇偶奇偶进空间哦靠接口解决欧尼偶奇偶奇偶进空间哦靠接口
+			解决欧尼偶奇偶奇偶进空间哦靠接口解决欧尼偶奇偶奇偶进空间哦靠接口
+			</a>
+		</div>
+		<script type="text/javascript" src="http://freegeoip.net/json/?callback=foo"></script>  
+		<script type="text/javascript">  
+		    function foo(json){
+		      alert(json.ip); 
+		    }  
+		</script>
+		<script type="text/javascript">
+			function limt_emp(){//员工：超过5个字符 其他显示...  
+			    $(function () {  
+			        $(".emp").each(function () {  
+			        	var maxwidth = 120;  
+			        	console.log($(this))
+				        if ($(this).text().length >= maxwidth) {  
+				        	var b = $(this).children().is("a");  
+				        	if (b) {  
+				        		$(this).children().text($(this).children().text().substring(0, maxwidth) + "...");  //截取我想要的长度
+				        	} else {  
+						        $(this).text($(this).text().substring(0, maxwidth));  
+						        $(this).text($(this).text() + "...");  
+				       		 }  
+				        }  
+			       });  
+				});  
+			}  
+			limt_emp();
+			
+		</script>
+	</body>
+</html>

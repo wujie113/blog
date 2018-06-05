@@ -1,0 +1,38 @@
+<layout  name="layout" />
+ <h1 class="page-header">管理 <span class="badge">4</span></h1>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">id</span></th>
+        <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">昵称</span></th>
+        <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">邮箱</span></th>
+        <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">网址</span></th>
+        <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">留言时间</span></th>
+        <th><span class="glyphicon glyphicon-th-large"></span> <span class="visible-lg">留言内容</span></th>
+        <th><span class="glyphicon glyphicon-th-large"></span> <span class="visible-lg">操作</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><label>1</label></td>
+        <td class="article-title">润润</td>
+        <td>271886954@163.com</td>
+        <td>www.baidu.com</td>
+        <td>2018-05-01</td>
+        <td class="article-title">这是留言内容摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
+        <td><a rel="1" name="see" href="{:url('Message/message_detail',array('action'=>'message'))}" >查看</a> <a rel="1" name="delete">删除</a></td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+<footer class="message_footer">
+  <nav>
+    <ul class="pagination pagenav">
+      <li class="disabled"><a aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a> </li>
+      <li class="active"><a>1</a></li>
+      <li class="disabled"><a aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a> </li>
+    </ul>
+  </nav>
+</footer>     

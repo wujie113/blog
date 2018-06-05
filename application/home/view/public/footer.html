@@ -1,0 +1,73 @@
+</article>
+<div class="blank"></div>
+<div id="copright">Design by DanceSmile</div>
+<script>
+	var id;
+	var index;
+	var i;
+	function browser(aa,index,i){
+		id = $(aa).attr("name");
+		index = index;
+		i = i;
+		console.log(id);
+		$.ajax({
+			type:"post",
+			url:"{:url('Blogdetail/blogdetail_ajax')}", //ajax请求需要的操作
+			async:true,
+			data:{'id':id},
+			success:function(data){
+				console.log(data);
+				location.href = "/home/blogdetail/blogdetail/action/"+index+"/id/"+id+"/i/"+i; //页面跳转带的参数
+			}
+		});
+	}
+
+
+function titleName(type) {
+	if (type == "tech") {
+		return "技术谈论"
+	}
+}
+
+//页面显示多少长度文字用。。。代替
+$(function(){
+ 	$(".words").each(function () {
+ 		var maxwidth = 170;  
+// 		console.log($(this).children().is("label"));
+   		if($(this).text().length >= maxwidth){
+   			var b = $(this).children().is("label"); 
+   			if(b){
+   				$(this).children().text($(this).children().text().substring(0, maxwidth) + "...");  //截取我想要的长度
+   			}else{
+   				$(this).text($(this).text().substring(0, maxwidth));  
+				$(this).text($(this).text() + "...");  
+   			}
+   		} 
+ 	});
+ });
+ //点赞
+ var star_id;
+function star(aa){
+	star_id = $(aa).attr("name");
+	$.ajax({
+		type:"post",
+		url:"{:url('Star/star_ajax')}", //ajax请求需要的操作
+		async:true,
+		data:{'id':star_id},
+		success:function(data){
+			var datas = JSON.parse(data);
+			var msg = datas.msg;
+			if(msg){
+				alert("您已经点过赞啦！");
+			}else{
+				location.reload();//点赞的话需要刷新页面
+			}
+		}
+	});
+}
+
+
+</script>
+
+</body>
+</html>
