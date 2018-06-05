@@ -5,11 +5,15 @@ use  think\Request;
 use app\home\model\Tp_message;
 use think\Db;
 class Messages extends Tp_common{
-	
-	
-	function messages(Tp_message $message){
-		$info = $message::all();
+	function messages(){
+		//获取留言并且根据时间排序
+		$info = Db::name('message')->where(["anwser_id"=>0])->order("create_time desc")->select(); //获取一级留言 当anwser_id为0的时候 就为一级留言
+		foreach($info as $key=>$value){ //遍历
+			$info[$key]['anwser_info'] = Db::name('message')->where(["anwser_id"=>$value['id']])->select(); //查询回复的id和一级留言id一致的
+		}	
+		$count = Db::name('message')->where(["anwser_id"=>0])->count();	
 		$this->assign("info",$info);
+		$this->assign('mess_count',$count);
 		return view();
 	}
 	//点击表情发送一个ajax请求 将表情的地址传送给前台
@@ -38,11 +42,23 @@ class Messages extends Tp_common{
 		$email = $post['email'];
 		$website = $post['website'];
 		$editor = $post['editor'];
-		$editors = "nihao + <img src='/static/home/images/arclist/victory.gif'  /> +oik";
-		$datas = ['content' => $editors,'name' => $name ,'email' =>$email,'website'=>$website];
+		$date_time = time();
+		$ismatched = preg_match_all('/:\w+:/',$editor,$mat);//匹配全局preg_match_all（）
+		$str=":";
+		$arr = [];
+		foreach($mat[0] as $key=>$value){
+			$val =  trim($value,':');
+			array_push($arr,$val);
+		}
+		if($ismatched){
+			$editors = "nihaooik"."<img src='/static/home/images/arclist/".$arr[0].".gif'/>";
+		}else{
+			$editors = $editor;
+		}
+		$datas = ['content' => $editors,'name' => $name ,'email' =>$email,'website'=>$website,'create_time'=>$date_time];
 		$res = Db::name('message')->insert($datas);
 		if($res){
-			$result=array('status'=>'成功','msg'=>1);
+			$result=array('status'=>'成功','msg'=>1,'ismatched'=>$arr);
 			return json_encode($result);
 		}else{
 			$result=array('status'=>'成功','msg'=>1);
@@ -54,7 +70,8 @@ class Messages extends Tp_common{
 		$post = Request::instance()->param();
 		$anwser_id = $post['anwser_id'];
 		$comments = $post['comments'];
-		$datas = ['anwser_id'=>$anwser_id,'content'=>$comments];
+		$date_time = time();
+		$datas = ['anwser_id'=>$anwser_id,'content'=>$comments,'create_time'=>$date_time];
 		$res = Db::name('message')->insert($datas);
 		if($res){
 			$result=array('status'=>'成功','msg'=>1);

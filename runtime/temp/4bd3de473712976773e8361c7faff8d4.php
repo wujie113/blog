@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:75:"D:\phpStudy\WWW\blog\public/../application/home\view\messages\messages.html";i:1528169150;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1527834259;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:75:"D:\phpStudy\WWW\blog\public/../application/home\view\messages\messages.html";i:1528188218;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1527834259;}*/ ?>
 <!Doctype html>
 <html>
 <head>
@@ -131,7 +131,7 @@
 	</div>
 	<div class="message-boths color_word" >
 		<i class="icon iconfont  icon-liuyan" class="vertical"  ></i>
-		<b>10</b>
+		<b><?php echo $mess_count; ?></b>
 		个小伙伴正在吐槽
 	</div>
 	<hr class="hr_message"/>
@@ -160,31 +160,34 @@
 							<button class="btn_cancle" onclick="cancel(this)" >取消</button>
 						</div>
 					</div>
-					<!--<ul style="display: none;">
-						<li>
-							<div  class="message_blog"   >
-								<img class="title_img" src='http://gravatar.duoshuo.com/avatar/fba7ce4051ec01fd3efc50a0f3ecac5a?s=108&d=http%3A%2F%2Fwww.xuechenlei.com%2Fwp-content%2Fthemes%2FGit%2Fcss%2Fimg%2Fdefault.png&r=g 2x'  />
-								<span>
-									<div >
-										<?php echo $val['content']; ?>
-									</div>
-									<div >
-										<label><?php echo $val['name']; ?>&nbsp;&nbsp;2018-03-25</label>
-										<a  class="reply_leave color_word" name="<?php echo $val['id']; ?>" onclick="reply(this)" >回复</a>
-									</div>
-								</span>
-							</div>
-							<div  class="reply_text" style="display: none;" >
-							 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" class="comment" cols="100%" rows="3" tabindex="1"  >
-								</textarea>
-								<div>
-									<button class="btn-sure" onclick="sure(this)" >确定</button>
-									<button class="btn_cancle" onclick="cancel(this)" >取消</button>
+					<?php if(is_array($val['anwser_info']) || $val['anwser_info'] instanceof \think\Collection || $val['anwser_info'] instanceof \think\Paginator): $i = 0; $__LIST__ = $val['anwser_info'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$rplay): $mod = ($i % 2 );++$i;?>
+						<ul>
+							<li>
+								<div  class="message_blog"   >
+									<img class="title_img" src='http://gravatar.duoshuo.com/avatar/fba7ce4051ec01fd3efc50a0f3ecac5a?s=108&d=http%3A%2F%2Fwww.xuechenlei.com%2Fwp-content%2Fthemes%2FGit%2Fcss%2Fimg%2Fdefault.png&r=g 2x'  />
+									<span>
+										<div >
+											<?php echo $rplay['content']; ?>
+										</div>
+										<div >
+											<label><?php echo $rplay['name']; ?>&nbsp;&nbsp;2018-03-25</label>
+											<!--每次回复是拿到父级id-->
+											<a  class="reply_leave color_word" name="<?php echo $val['id']; ?>" onclick="reply(this)" >回复</a>
+										</div>
+									</span>
 								</div>
-							</div>
-							
-						</li>
-					</ul>-->
+								<div  class="reply_text" style="display: none;" >
+								 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" class="comment" cols="100%" rows="3" tabindex="1"  >
+									</textarea>
+									<div>
+										<button class="btn-sure" onclick="sure(this)" >确定</button>
+										<button class="btn_cancle" onclick="cancel(this)" >取消</button>
+									</div>
+								</div>
+								
+							</li>
+						</ul>
+					<?php endforeach; endif; else: echo "" ;endif; ?>
 				</li>
 			</ul>
 		<?php endforeach; endif; else: echo "" ;endif; ?>
@@ -249,14 +252,15 @@
 		 	async:true,
 		 	success:function(data){
 		 		var datas = JSON.parse(data);
-		 		if(datas.msg == 1){
-		 			location.reload();
-		 			$('.mailbox').css('display','none');
-		 			$('#comment_mail_notify').attr('checked',false);
-					
-		 		}else{
-		 			
-		 		}
+		 		console.log(datas);
+//		 		if(datas.msg == 1){
+//		 			location.reload();
+//		 			$('.mailbox').css('display','none');
+//		 			$('#comment_mail_notify').attr('checked',false);
+//					
+//		 		}else{
+//		 			
+//		 		}
 		 	}
 		 });
 	});
@@ -268,25 +272,25 @@
 	};
 	//回复确定
 	function sure(replay){
-	    var anwser_id	= $(replay).parents('.reply_text').attr('anwser_id'); //回复哪条评论的id
+	    var anwser_id	= $(replay).parents('.reply_text').attr('anwser_id'); //回复哪条评论的父级id
 	    var comments = $(replay).parent().prev().val();
-	    var pares = $(replay).parent().parent().parent();
-	    console.log(pares);
 		if($.trim(comments)==""){ //判断输入框里面的内容为空
 				return false;
 		}
-//		$.ajax({
-//		 	type:"post",
-//		 	url:"<?php echo url('Messages/replay'); ?>",
-//		 	data:{'anwser_id':anwser_id,'comments':comments},
-//		 	async:true,
-//		 	success:function(data){
-//		 		var dates = JSON.parse(data);
-//		 		if(dates.msg == 1){
-//		 			
-//		 		}
-//		 	}
-//		 });
+		$.ajax({
+		 	type:"post",
+		 	url:"<?php echo url('Messages/replay'); ?>",
+		 	data:{'anwser_id':anwser_id,'comments':comments},
+		 	async:true,
+		 	success:function(data){
+		 		console.log(data);
+		 		var dates = JSON.parse(data);
+		 		if(dates.msg == 1){
+		 			$(replay).parents('.reply_text').css("display",'none');
+		 			location.reload();//点赞的话需要刷新页面
+		 		}
+		 	}
+		 });
 	}
 	//取消回复
 	function cancel(aa){

@@ -6,6 +6,7 @@ use think\Request;
 class Tp_common extends Controller{
 	//表情
 	protected $emmily = [
+		'smile' => 'smile.gif',
 		'arrogant'=>"arrogant.gif",
 		'awkward'=>'awkward.gif',
 		'bigSmile'=>'bigSmile.gif',
