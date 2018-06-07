@@ -15,7 +15,14 @@ class Blogdetail extends Tp_common{
 		Db::table('tp_article')->where(['id'=>$id])->update(['sign'=>$i]);
 		$info = $datas::all(['id'=>$id]);
 		$this->assign('info',$info);
-//		echo $ip."<br/>".$id;
+		$comment = Db::name('comment')->where(["anwser_id"=>0,'c_id'=>$id])->order("create_time desc")->select();
+		foreach($comment as $key=>$value){ //遍历
+			$comment[$key]['anwser_info'] = Db::name('comment')->where(["anwser_id"=>$value['id']])->select(); //查询回复的id和一级留言id一致的
+		}	
+		$this->assign("comment",$comment);
+		//评论数量
+		$comcount = Db::name('comment')->where(["anwser_id"=>0,'c_id'=>$id])->count();
+		$this->assign("comcount",$comcount);
 		return view();
 	}
 	//ajax 请求需要处理的逻辑

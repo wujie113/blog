@@ -5,8 +5,10 @@ use app\home\model\Tp_article;
 use think\Db;
 class Index extends Tp_common{
 	function index (){
-		$action = new Tp_article;
-		$info = $action::all(['status'=>1]);
+//		$action = new Tp_article;
+//		$info = $action::all(['status'=>1]);
+//				print_r($info);
+		$info = Db::name('article')->where(['status'=>1])->order("create_time desc")->select();
 		$this->assign('info',$info);
 		$conts =   Db::table('tp_article')->where(['status'=>1])->count();//获取显示的文章总篇数
 		$slowlife = Db::table('tp_article')->where(['status'=>1,'type'=>2])->count(); //慢生活显示的总数

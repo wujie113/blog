@@ -5,9 +5,10 @@
 	  <div class="blog-div" >
 	  	<h2><a href="#">{$val.title}</a></h2>
 	  	<p >
-	  		{$val.create_time|date='Y-m-d',###}
+	  		<!--{$val.create_time}-->
+	  		<!--{:date('Y-m-d',$val.create_time)}-->
 	  	</p>
-	  	<a class="topimg"  >
+		<a class="topimg"  >
 			<img src="{$val.titlepic }"  >
 		</a>
 		<label class="lable_content" >
@@ -17,7 +18,7 @@
 				
 				</label>
 			</span>
-			<a   rel="nofollow"  class="more-link " name="{$val.id}" onclick="browser(this,'index',1)"  >继续阅读 »</a>
+			<a   rel="nofollow" class="more-link " name="{$val.id}" onclick="browser(this,'index',1)"  >继续阅读 »</a>
 			<p class="read">
 	  			<span >
 	  				<i class="icon iconfont icon-touxiang" ></i>

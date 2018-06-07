@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:75:"D:\phpStudy\WWW\blog\public/../application/home\view\messages\messages.html";i:1528188218;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1527834259;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:75:"D:\phpStudy\WWW\blog\public/../application/home\view\messages\messages.html";i:1528359819;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528363679;}*/ ?>
 <!Doctype html>
 <html>
 <head>
@@ -57,12 +57,12 @@
 <div class="blog"  >
   	<div class="message-contend">
   		<h2 class="messge-pall-left" >留言板</h2>
-  		<div  class="messge-pall-right messge-pall" >
+  		<!--<div  class="messge-pall-right messge-pall" >
   			
   			<i class="icon iconfont  icon-fenxiang">
   				
   			</i>分享
-  		</div>
+  		</div>-->
   		<div class="message-boths">
   			<div class="messge-pall-right">
   				<a></a>
@@ -73,17 +73,15 @@
   			<p class="line_height">有任何问题以及建议都可以给我留言</p>
   		</div>
   		<div class="line_height">
-  			<span class="messge-pall-left" >发表我的评论</span>
+  			<span class="messge-pall-left" >发表我的留言</span>
   			<span class="messge-pall-right" >
-  				<button class="btn comment_btn">取消评论</button>
+  				<button class="btn comment_btn">取消留言</button>
   			</span>
   		</div>
   	</div>
   	<div class="comt message-boths" >
   		<!--<div contentEditable="true" id="editor"  class="con input-block-level comt-area"  ></div> --> 
-  		<textarea placeholder="来都来了，说点什么吧…" style="width: 100%;min-height: 30px;" class="input-block-level comt-area" name="editor" id="editor" cols="100%" rows="3" tabindex="1"  >
-  			
-  		</textarea>
+  		<textarea style="padding-left: 5px;width: 100%;" placeholder="  来都来了，说点什么吧…" style="width: 100%;min-height: 30px;" class="input-block-level comt-area" name="editor" id="editor" cols="100%" rows="3" tabindex="1"  ></textarea>
   	</div>
   	<div class="margin-top-10 emotion-height" >
   		<span class="messge-pall-left  emoticon">
@@ -92,7 +90,7 @@
   		<label class="messge-pall-right message-reply">
   			<input type="checkbox" name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify"  class="vertical"  >
   			有人回复及时通知我
-  			<button class="btn btn_submit"  name="submit" id="submits" tabindex="5" >
+  			<button class="btn btn_submit"  name="submit" id="submits" tabindex="5" onclick="submits(this,'message')" >
   				<!--<i class="icon iconfont icon-pingluncomment43" class="vertical"  ></i>--> 
   				<i class="icon iconfont icon-3tuihuanhuozhengcegouxuan" class="vertical"  style="font-size: 16px;"  ></i> 
   				  <label style="position: relative;top: -2px;" > 提交评论 	</label>
@@ -141,7 +139,7 @@
 			<ul>
 				<li>
 					<div  class="message_blog"   >
-						<img class="title_img" src='http://gravatar.duoshuo.com/avatar/fba7ce4051ec01fd3efc50a0f3ecac5a?s=108&d=http%3A%2F%2Fwww.xuechenlei.com%2Fwp-content%2Fthemes%2FGit%2Fcss%2Fimg%2Fdefault.png&r=g 2x'  />
+						<img class="title_img" src='/static/home/images/default.png'  />
 						<span>
 							<div >
 								<?php echo $val['content']; ?>
@@ -153,10 +151,9 @@
 						</span>
 					</div>
 					<div  class="reply_text" style="display: none;" >
-					 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" class="comment" cols="100%" rows="3" tabindex="1"  >
-						</textarea>
-						<div>
-							<button class="btn-sure" onclick="sure(this)" >确定</button>
+					 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" class="comment" cols="100%" rows="3" tabindex="1"  ></textarea>
+						<div  >
+							<button class="btn-sure" onclick="determine(this,'messages')" >确定</button>
 							<button class="btn_cancle" onclick="cancel(this)" >取消</button>
 						</div>
 					</div>
@@ -164,7 +161,7 @@
 						<ul>
 							<li>
 								<div  class="message_blog"   >
-									<img class="title_img" src='http://gravatar.duoshuo.com/avatar/fba7ce4051ec01fd3efc50a0f3ecac5a?s=108&d=http%3A%2F%2Fwww.xuechenlei.com%2Fwp-content%2Fthemes%2FGit%2Fcss%2Fimg%2Fdefault.png&r=g 2x'  />
+									<img class="title_img" src='/static/home/images/default.png'  />
 									<span>
 										<div >
 											<?php echo $rplay['content']; ?>
@@ -177,10 +174,9 @@
 									</span>
 								</div>
 								<div  class="reply_text" style="display: none;" >
-								 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" class="comment" cols="100%" rows="3" tabindex="1"  >
-									</textarea>
+								 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" class="comment" cols="100%" rows="3" tabindex="1"  ></textarea>
 									<div>
-										<button class="btn-sure" onclick="sure(this)" >确定</button>
+										<button class="btn-sure" onclick="determine(this,'messages')" >确定</button>
 										<button class="btn_cancle" onclick="cancel(this)" >取消</button>
 									</div>
 								</div>
@@ -199,104 +195,15 @@
   <aside>
   	jbojkj
   </aside>
- <script type="text/javascript" src="__PUBLIC__/js/message.js" ></script>
  <script type="text/javascript">
- 
-   	var img_block = 1;
-   	$('.emoticon').click(function(){
-		$.ajax({
-			type:"post",
-			url:"<?php echo url('Messages/messages_ajax'); ?>",
-			async:true,
-			data:{"id":1},
-			success:function(data){
-				var data = JSON.parse(data);
-				var img_url = data.data;
-				var img = '';
-				for(var i = 0; i<img_url.length; i++ ){
-					var img_attr = img_url[i].slice(0,img_url[i].length-4);//给每个标识
-					img += "<img  data-smile="+img_attr+" src='__PUBLIC__/images/arclist/"+img_url[i]+"' onclick='employs(this)' />";
-				}
-				var img_employ = document.getElementById('comment_smilies');
-				img_employ.innerHTML = img;
-			}
-		});
-		if(img_block == 1){
-			$('#comment_smilies').css('display','block');
-			img_block = 0;
-		}else if(img_block == 0){
-			$('#comment_smilies').css('display','none');
-			img_block = 1;
+	//点击取消评论的时候
+	$('.comment_btn').click(function(){
+		$('#editor').val("");
+		if($('#comment_mail_notify').is(':checked')){
+			$('#comment_mail_notify').prop("checked",false);
+			$('.mailbox').css('display','none');
 		}
 	});
-	function employs(aa){
-		var img_src = $(aa).attr('data-smile');//获取图片自定义的属性
-		var employ = ":"+img_src+":";
-		var tet = $('#editor').val();
-		if($.trim(tet)==""){ //判断输入框的内容是否为空
-		 	$('#editor').val("  "+employ+"  ");
-		}else{
-		 	$('#editor').val(tet+"   "+employ);
-		}
-		$('#comment_smilies').css('display','none');
-	}
-	$('.btn_submit').click(function(){
-		var name = $('#name').val();
-		var email = $('#email').val();
-		var website = $('#website').val();
-		var editor = $('#editor').val();
-		 $.ajax({
-		 	type:"post",
-		 	url:"<?php echo url('Messages/comment'); ?>",
-		 	data:{'name':name,'email':email,'website':website,'editor':editor},
-		 	async:true,
-		 	success:function(data){
-		 		var datas = JSON.parse(data);
-		 		console.log(datas);
-//		 		if(datas.msg == 1){
-//		 			location.reload();
-//		 			$('.mailbox').css('display','none');
-//		 			$('#comment_mail_notify').attr('checked',false);
-//					
-//		 		}else{
-//		 			
-//		 		}
-		 	}
-		 });
-	});
-	function reply(aa){
-		var  coment_id =  $(aa).attr('name');
-		$('.reply_text').css('display','none');
-		$(aa).parents('.message_blog').next('.reply_text').css('display','block');
-		$(aa).parents('.message_blog').next('.reply_text').attr("anwser_id",coment_id);
-	};
-	//回复确定
-	function sure(replay){
-	    var anwser_id	= $(replay).parents('.reply_text').attr('anwser_id'); //回复哪条评论的父级id
-	    var comments = $(replay).parent().prev().val();
-		if($.trim(comments)==""){ //判断输入框里面的内容为空
-				return false;
-		}
-		$.ajax({
-		 	type:"post",
-		 	url:"<?php echo url('Messages/replay'); ?>",
-		 	data:{'anwser_id':anwser_id,'comments':comments},
-		 	async:true,
-		 	success:function(data){
-		 		console.log(data);
-		 		var dates = JSON.parse(data);
-		 		if(dates.msg == 1){
-		 			$(replay).parents('.reply_text').css("display",'none');
-		 			location.reload();//点赞的话需要刷新页面
-		 		}
-		 	}
-		 });
-	}
-	//取消回复
-	function cancel(aa){
-		$(aa).parents('.reply_text').css("display",'none'); //找到当前这个让其取消
-		$(aa).parent().prev().val("");
-	}
  </script>
 
 
@@ -304,6 +211,7 @@
 <div class="blank"></div>
 <div id="copright">Design by DanceSmile</div>
 <script>
+	//点击继续阅读浏览
 	var id;
 	var index;
 	var i;
@@ -318,24 +226,23 @@
 			async:true,
 			data:{'id':id},
 			success:function(data){
-				console.log(data);
-				location.href = "/home/blogdetail/blogdetail/action/"+index+"/id/"+id+"/i/"+i; //页面跳转带的参数
+				window.location.reload();
+				var data = JSON.parse(data);
+				if(data.msg == 1){
+					window.location.href = "/home/blogdetail/blogdetail/action/"+index+"/id/"+id+"/i/"+i; //页面跳转带的参数
+				}
 			}
 		});
 	}
-
-
 function titleName(type) {
 	if (type == "tech") {
 		return "技术谈论"
 	}
 }
-
 //页面显示多少长度文字用。。。代替
 $(function(){
  	$(".words").each(function () {
- 		var maxwidth = 170;  
-// 		console.log($(this).children().is("label"));
+ 		var maxwidth = 150;
    		if($(this).text().length >= maxwidth){
    			var b = $(this).children().is("label"); 
    			if(b){
@@ -367,8 +274,162 @@ function star(aa){
 		}
 	});
 }
-
-
+//勾选回复需要填写邮箱和昵称
+$('#comment_mail_notify').click(function(){
+	if($('#comment_mail_notify').is(':checked')){
+		$(".prompt").css('display','none');
+		$('.mailbox').css('display','block');
+	}else{
+		$('.mailbox').css('display','none');
+	}
+});
+//点击表情的时候 留言和评论
+var img_block = 1;
+$('.emoticon').click(function(){
+	$.ajax({
+		type:"post",
+		url:"<?php echo url('Messages/messages_ajax'); ?>",
+		async:true,
+		data:{"id":1},
+		success:function(data){
+			var data = JSON.parse(data);
+			var img_url = data.data;
+			var img = '';
+			for(var i = 0; i<img_url.length; i++ ){
+				var img_attr = img_url[i].slice(0,img_url[i].length-4);//给每个标识
+				img += "<img  data-smile="+img_attr+" src='__PUBLIC__/images/arclist/"+img_url[i]+"' onclick='employs(this)' />";
+			}
+			var img_employ = document.getElementById('comment_smilies');
+			img_employ.innerHTML = img;
+		}
+	});
+	if(img_block == 1){
+		$('#comment_smilies').css('display','block');
+		img_block = 0;
+	}else if(img_block == 0){
+		$('#comment_smilies').css('display','none');
+		img_block = 1;
+	}
+});
+//这个是吧表情放到输入框
+function employs(aa){
+	var img_src = $(aa).attr('data-smile');//获取图片自定义的属性
+	var employ = ":"+img_src+":";
+	var tet = $('#editor').val();
+	if($.trim(tet)==""){ //判断输入框的内容是否为空
+	 	$('#editor').val("  "+employ+"  ");
+	}else{
+	 	$('#editor').val(tet+"   "+employ);
+	}
+	$('#comment_smilies').css('display','none');
+}
+//点击回复留言和评论
+//回复留言
+function reply(aa){
+	var  coment_id =  $(aa).attr('name');
+	$('.reply_text').css('display','none');
+	$(aa).parents('.message_blog').next('.reply_text').css('display','block');
+	$(aa).parents('.message_blog').next('.reply_text').attr("anwser_id",coment_id);
+};
+//取消回复和评论
+function cancel(aa){
+	$(aa).parents('.reply_text').css("display",'none'); //找到当前这个让其取消
+	$(aa).parent().prev().val("");
+}
+/*回复评论*/
+function determine(replay,comment){
+	var anwser_id= $(replay).parents('.reply_text').attr('anwser_id'); //回复哪条评论的父级id
+	var comments = $(replay).parent().prev().val();
+	if($.trim(comments)==""){ //判断输入框里面的内容为空
+		return false;
+	}
+	var urls;
+	if(comment =="comment"){
+		urls = "<?php echo url('Comment/replay_comment'); ?>";
+	}else if(comment =="messages"){
+		urls = "<?php echo url('Messages/replay'); ?>";
+	}
+	$.ajax({
+	 	type:"post",
+	 	url:urls,
+	 	data:{'anwser_id':anwser_id,'comments':comments},
+	 	async:true,
+	 	success:function(data){
+	 		console.log(data);
+	 		var dates = JSON.parse(data);
+	 		if(dates.msg == 1){
+	 			$(replay).parents('.reply_text').css("display",'none');
+	 			location.reload();//点赞的话需要刷新页面
+	 		}
+	 	}
+	 });
+}
+//点击提交的时候的逻辑
+function submits(aa,comment){
+	var allcookies = document.cookie;    
+	console.log(allcookies);
+	//验证邮箱
+	var filter=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	//验证网址
+//	var strRegex ='(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]'; 
+	var strRegex ='[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]'; 
+	var re=new RegExp(strRegex);
+	var name = $('#name').val();
+	var email = $('#email').val();
+	var website = $('#website').val();
+	var editor = $('#editor').val();
+	if(filter.test(email)){
+//		return true;
+	}else{
+		alert("请填写正确的邮箱地址");
+		$('#email').val("");
+		return false;
+	}
+	if(re.test(website)){
+		
+	}else{
+		alert("请填写正确的url地址,带http://的");
+		 $('#website').val();
+		return false;
+	}
+	if($('#comment_mail_notify').is(':checked')){
+		$(".prompt").css('display','none');
+		if(name=="" || email=="" || website=="" || $.trim(editor)==""){
+			alert("请填写完整的信息");
+			return false;
+		}
+	}else{
+		$(".prompt").css('display','block');
+		alert("请填写完整的信息");
+		return false;
+	}
+	var data,urls;
+	if(comment =="message"){
+		data = {'name':name,'email':email,'website':website,'editor':editor};
+		urls ="<?php echo url('Messages/comment'); ?>";
+	}else if(comment =="comment"){
+		var pageid = $(aa).attr('pageid');
+		data = {'name':name,'email':email,'website':website,'editor':editor,"pageid":pageid};
+		urls ="<?php echo url('Comment/comment'); ?>";
+	}
+	 $.ajax({
+	 	type:"post",
+	 	url:urls,
+	 	data:data,
+	 	async:true,
+	 	success:function(data){
+	 		var datas = JSON.parse(data);
+	 		if(datas.msg == 1){
+	 			location.reload();
+	 			$('.mailbox').css('display','none');
+	 			$('#comment_mail_notify').attr('checked',false);
+				
+	 		}else{
+	 			
+	 		}
+	 	}
+	 });
+};
 </script>
 
 </body>

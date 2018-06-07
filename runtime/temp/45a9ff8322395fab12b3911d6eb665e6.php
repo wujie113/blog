@@ -1,5 +1,5 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:77:"D:\phpStudy\WWW\blog\public/../application/blog\view\article\add_article.html";i:1525860219;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1525423597;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
-<!doctype html>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:77:"D:\phpStudy\WWW\blog\public/../application/blog\view\article\add_article.html";i:1525868484;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1527059028;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
+<!Doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -35,7 +35,9 @@
           <a class="navbar-brand" href="/">YlsatCMS</a> </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="">消息 <span class="badge">1</span></a></li>
+            <li>
+            	<a href="">消息 <span class="badge">1</span></a>
+            </li>
             <li class="dropdown">
             	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             		admin <span class="caret"></span>
@@ -46,6 +48,7 @@
               </ul>
             </li>
             <li><a href="<?php echo url('Login/login'); ?>" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
+            <li><a href="<?php echo url('Register/register'); ?>" >注册</a></li>
            <!-- <li><a data-toggle="modal" data-target="#WeChat">帮助</a></li>-->
           </ul>
           <!--<form action="" method="post" class="navbar-form navbar-right" role="search">
@@ -159,7 +162,8 @@
                 	<input type="radio" name="visibility" value="1" />加密</p>
                 <p>
                 	<label>发布于：</label><span class="article-time-display">
-                	<input style="border: none;" type="datetime" name="create_time" value="<?php echo date('Y-m-d'); ?>" <!-- value="<?php echo date('Y-m-d H:i:s'); ?>"--> />
+                		<!-- value="<?php echo date('Y-m-d H:i:s'); ?>"-->
+                	<input style="border: none;" type="datetime" name="create_time" value="<?php echo date('Y-m-d'); ?>"  />
                 </span></p>
               </div>
               <div class="add-article-box-footer">

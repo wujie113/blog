@@ -43,22 +43,28 @@ class Messages extends Tp_common{
 		$website = $post['website'];
 		$editor = $post['editor'];
 		$date_time = time();
-		$ismatched = preg_match_all('/:\w+:/',$editor,$mat);//匹配全局preg_match_all（）
-		$str=":";
+		$ismatched = preg_match_all('/:\w+:/',$editor,$mat);//匹配全局preg_match_all 找到包含某个字符样的字符
 		$arr = [];
-		foreach($mat[0] as $key=>$value){
-			$val =  trim($value,':');
-			array_push($arr,$val);
+		foreach($mat[0] as $key=>$value){//遍历将其存在数组里面
+			array_push($arr,$value); 
 		}
 		if($ismatched){
-			$editors = "nihaooik"."<img src='/static/home/images/arclist/".$arr[0].".gif'/>";
+			$i = 0;
+			$len = count($arr);
+			$a = [];
+			$b = [];
+			foreach($arr as $key=>$val){
+				array_push($a,$val);
+				array_push($b,"<img src='/static/home/images/arclist/".trim($val,':').".gif'/>");
+				$editors = str_replace($a,$b,$editor); //将整个数组替换
+			}
 		}else{
 			$editors = $editor;
 		}
 		$datas = ['content' => $editors,'name' => $name ,'email' =>$email,'website'=>$website,'create_time'=>$date_time];
 		$res = Db::name('message')->insert($datas);
 		if($res){
-			$result=array('status'=>'成功','msg'=>1,'ismatched'=>$arr);
+			$result=array('status'=>'成功','msg'=>1);
 			return json_encode($result);
 		}else{
 			$result=array('status'=>'成功','msg'=>1);

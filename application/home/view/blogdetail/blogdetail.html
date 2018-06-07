@@ -26,7 +26,7 @@
 	  			</span>
 	  			<span class="margin-left-20">
 	  				<i class="icon iconfont icon-pinglun vertical"  ></i>
-	     			<span>0个评论</span>
+	     			<span>{$comcount}个评论</span>
 	  			</span>
 		  	</label>
 		  	<div class="detail_content">
@@ -36,13 +36,13 @@
 		  	<!---->
 		  	<div class="div_like" >
 		  		<span class="span_like" >
-			  		<a href="#" class="blog_detail_a  thumbs-ups" >
-			  			<i class="icon iconfont icon-buoumaotubiao15 vertical"  ></i> 喜欢 (<span class="count">0</span>)
+			  		<a class="blog_detail_a  thumbs-ups star" name="{$val.id}" onclick="star(this)" >
+			  			<i class="icon iconfont icon-buoumaotubiao15 vertical"  ></i> 喜欢 (<span class="count">{$val.star}</span>)
 			  		</a>
 		  		</span>
 		  		<span class="span_share" >
 			  		<a href="#" class="blog_detail_a share" >
-			  			<i class="icon iconfont icon-weibiaoti-  vertical"  ></i> 分享 (<span class="bds_count">0</span>)
+			  			<i class="icon iconfont icon-weibiaoti-  vertical"  ></i> 分享 
 			  		</a>
 			  		<div>
 			  			<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare share action-popover"  >
@@ -55,73 +55,116 @@
 			  		</div>
 		  		</span>
 		  	</div>
-		  	<!--<div>
-		  		<img src='http://www.xuechenlei.com/wp-content/uploads/myimg/b_0001.gif' style="vertical-align: middle;" />
-		  		<label style="margin-left: 5px;margin-right: 5px;"> 润润</label>
+		  	<!--评论-->
+		  	<div>
+		  		<img src='/static/home/images/b_0001.gif' style="vertical-align: middle;" />
+		  		<label style="margin-left: 5px;margin-right: 5px;"> </label>
 		  		<span style="color: wheat;">发表我的评论</span>
 		  	</div>
-		  	<div  class="reply_text" style="margin-top: 10px;" >
-			 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" id="comment" cols="100%" rows="3" tabindex="1"  >
-				</textarea>
-			<div>
-			<button class="btn-sure">确定</button><button class="btn_cancle" >取消</button></div></div>-->
-			<!--<div class="line_height">
-	  			<span class="messge-pall-left" >发表我的评论</span>
-	  			<span class="messge-pall-right" >
-	  				<button class="btn comment_btn">取消评论</button>
-	  			</span>
-	  		</div>
-	  		<div class="comt message-boths" >
-		  		
-		  		<textarea placeholder="来都来了，说点什么吧…" style="width: 100%;min-height: 30px;" class="input-block-level comt-area" name="editor" id="editor" cols="100%" rows="3" tabindex="1"  >
-		  			
-		  		</textarea>
+		  	<div  class=" margin-top-10"  >
+				<textarea style="padding-left: 5px;width: 100%;" placeholder="  来都来了，说点什么吧…" style="width: 100%;min-height: 30px;" class="input-block-level comt-area" name="editor" id="editor" cols="100%" rows="3" tabindex="1"  ></textarea>
 		  	</div>
-		  	<div class="margin-top-10 emotion-height" >
-		  		<span class="messge-pall-left  emoticon">
+			<div class="margin-top-10"> 
+				<span class="messge-pall-left  emoticon">
 		  			<i class="icon iconfont  icon-biaoqing">表情</i>
 		  		</span>
 		  		<label class="messge-pall-right message-reply">
-		  			<input type="checkbox" name="comment_blog_notify"    class="vertical"  >
+		  			<input type="checkbox" name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify"  class="vertical"  >
 		  			有人回复及时通知我
-		  			<button class="btn"  name="submit" id="submits" tabindex="5" >
-		  				
+		  			<button class="btn btn_submit"  name="submit" pageid="{$val.id}" id="submits" tabindex="5" onclick="submits(this,'comment')"  >
 		  				<i class="icon iconfont icon-3tuihuanhuozhengcegouxuan" class="vertical"  style="font-size: 16px;"  ></i> 
 		  				  <label style="position: relative;top: -2px;" > 提交评论 	</label>
 		  			</button>
 		  			
 		  		</label>
+			</div>
+			<div class="prompt"  style="display: none;" >
+		  		<p style="float: right;color: red;font-size: 16px;padding-right: 60px;">请勾选填写昵称和邮箱</p>
 		  	</div>
-		  	<div class="prompt" style="display: none;"  >
-		  		<p style="float: right;color: red;font-size: 16px;padding-right: 80px;">请填写昵称和邮箱</p>
-		  	</div>
-		  	<div class="blog_info">
-		  		<span style="text-align: center;" >
+		  	<div id="comment_smilies" class="hide message-boths message-margin-bottom" >
+		  		
+			</div>
+			<!--填入邮箱信息-->
+			<div class="mailbox margin-top-10 message-boths fill-height" style="padding-top: 25px;"  >
+				 <span style="" >
 					<h4>hello！你需要填写昵称和邮箱哦(*^__^*) </h4>
 				</span>
 				<span >
-					<ul style="text-align: center;margin-top: 20px;">
+					<ul>
 						<li class="line_height message-margin">
 							<label class="input_lable" >昵称（必填）:</label>
-							<input type="text" name="name" class="input_text name" placeholder="昵称..." />
+							<input type="text" name="name" id="name" class="input_text name" maxlength="12" placeholder="昵称..."  />
 						</li>
 						<li class="line_height message-margin">
 							<label class="input_lable">邮箱（必填）:</label>
-							<input type="text" name="email" class="input_text email" placeholder="邮箱..." />
+							<input type="text" name="email" id="email" class="input_text email" placeholder="邮箱..."  />
 						</li>
 						<li class="line_height message-margin">
 							<label class="input_lable">网址:</label>
-							<input type="text" name="website" class="input_text website" placeholder="网址..." />
+							<input type="text" name="website" id="website" class="input_text website" placeholder="网址..." />
 						</li>
 						
 					</ul>
 				</span>
-		  		
-		  	</div>
-			-->
+			</div>
+
+			<div class="ul-padding" style="clear: both;margin-top: 60px;">
+				<volist name="comment" id="comment_val">
+				<ul>
+					<li>
+						<div  class="message_blog"   >
+							<img class="title_img" src='/static/home/images/b_0001.gif'  />
+							<span>
+								<div >
+									{$comment_val.content}
+								</div>
+								<div >
+									<label>{$comment_val.name}&nbsp;&nbsp;{:date('Y-m-d',$comment_val.create_time)}</label>
+									<a  class="reply_leave color_word" name="{$comment_val.id}" onclick="reply(this)"  >回复</a>
+								</div>
+							</span>
+						</div>
+						<div  class="reply_text" style="display: none;" >
+						 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" class="comment" cols="100%" rows="3" tabindex="1"  ></textarea>
+							<div >
+								<button class="btn-sure" onclick="determine(this,'comment')" >确定</button>
+								<button class="btn_cancle" onclick="cancel(this)" >取消</button>
+							</div>
+						</div>
+						<volist name="comment_val.anwser_info" id="rplay">
+						<ul  >
+							<li>
+								<div  class="message_blog"   >
+									<img class="title_img" src='/static/home/images/b_0001.gif'  />
+									<span>
+										<div >
+											{$rplay.content}
+										</div>
+										<div >
+											<label>{$rplay.name}&nbsp;&nbsp;{$rplay.create_time}</label>
+											<!--每次回复是拿到父级id-->
+											<a  class="reply_leave color_word" name="{$comment_val.id}" onclick="reply(this)"  >回复</a>
+										</div>
+									</span>
+								</div>
+								<div  class="reply_text" style="display: none;" >
+								 	<textarea placeholder="来都来了，说点什么吧…" class="input-block-level comt-area" name="comment" class="comment" cols="100%" rows="3" tabindex="1"  ></textarea>
+									<div>
+										<button class="btn-sure" onclick="determine(this,'comment')" >确定</button>
+										<button class="btn_cancle" onclick="cancel(this)" >取消</button>
+									</div>
+								</div>
+								
+							</li>
+						</ul>
+						</volist>
+					</li>
+				</ul>
+				</volist>
+			</div>
+
 			
-		  </div>
-		  
+		</div>
 		 </volist>
 		<aside> 
 			<h2>博客分类</h2>
@@ -143,8 +186,7 @@
 			  <li><a href="/">2018 年一月</a></li>
 			  <li><a href="/">2018 年二月</a></li>
 			  <li><a href="/">2018 年三月</a></li>
-			</ul>
-
+			</ul> 
 		</aside>
 		<!--分享到微博qq等等的代码-->
 		<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script>
@@ -157,7 +199,8 @@
 				$('.action-popover').css('display','block')
 			},function(){
 				$('.action-popover').css('display','none')
-			})
+			});
+
 		</script>
-<script type="text/javascript" src="__PUBLIC__/js/message.js" ></script>
+		
 		
