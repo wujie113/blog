@@ -21,10 +21,10 @@
 		</a>
 		<label class="lable_content" >
 			<span>
-				{$val.describe}
+				{$val.describe}{$val.type}
 			</span>
 			<!--传参数-->
-			<a name="{$val.id}" onclick="browser(this,'tech',2)"  rel="nofollow" class="more-link">继续阅读 »</a>
+			<a name="{$val.id}" onclick="browser(this,{$val.type},2)"  rel="nofollow" class="more-link">继续阅读 »</a>
 			<p class="read">
 	  			<span >
 	  				<i class="icon iconfont icon-touxiang" ></i>

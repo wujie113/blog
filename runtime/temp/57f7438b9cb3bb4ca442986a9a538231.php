@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:63:"D:\phpStudy\WWW\blog\public/../application/home\view\js\js.html";i:1528270000;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528360186;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:63:"D:\phpStudy\WWW\blog\public/../application/home\view\js\js.html";i:1528442839;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528442301;}*/ ?>
 <!Doctype html>
 <html>
 <head>
@@ -81,7 +81,7 @@
 				
 				</label>
 			</span>
-			<a name="<?php echo $val['id']; ?>" onclick="browser(this,'js',4)"  rel="nofollow" class="more-link">继续阅读 »</a>
+			<a name="<?php echo $val['id']; ?>" onclick="browser(this,<?php echo $val['type']; ?>,4)"  rel="nofollow" class="more-link">继续阅读 »</a>
 			<p class="read">
 	  			<span >
 	  				<i class="icon iconfont icon-touxiang" ></i>
@@ -116,28 +116,30 @@
 </article>
 <div class="blank"></div>
 <div id="copright">Design by DanceSmile</div>
-<script>
-	//点击继续阅读浏览
-	var id;
-	var index;
-	var i;
-	function browser(aa,index,i){
-		id = $(aa).attr("name");
-		index = index;
-		i = i;
-		console.log(id);
-		$.ajax({
-			type:"post",
-			url:"<?php echo url('Blogdetail/blogdetail_ajax'); ?>", //ajax请求需要的操作
-			async:true,
-			data:{'id':id},
-			success:function(data){
-				location.href = "/home/blogdetail/blogdetail/action/"+index+"/id/"+id+"/i/"+i; //页面跳转带的参数
+<script  type="text/javascript" >
+//点击继续阅读浏览
+var id;
+var index;
+var i;
+function browser(aa,index,i){
+	id = $(aa).attr("name");
+	index = index;
+	i = i;
+	console.log(id);
+	window.location.reload();
+	$.ajax({
+		type:"post",
+		url:"<?php echo url('Blogdetail/blogdetail_ajax'); ?>", //ajax请求需要的操作
+		async:true,
+		data:{'id':id},
+		success:function(data){
+			var data = JSON.parse(data);
+			if(data.msg == 1){
+				window.location.href = "/home/blogdetail/blogdetail/action/"+index+"/id/"+id+"/i/"+i; //页面跳转带的参数
 			}
-		});
-	}
-
-
+		}
+	});
+}
 function titleName(type) {
 	if (type == "tech") {
 		return "技术谈论"
@@ -159,7 +161,7 @@ $(function(){
  	});
  });
  //点赞
- var star_id;
+var star_id;
 function star(aa){
 	star_id = $(aa).attr("name");
 	$.ajax({
@@ -270,6 +272,8 @@ function determine(replay,comment){
 }
 //点击提交的时候的逻辑
 function submits(aa,comment){
+//	var allcookies = document.cookie;    
+//	console.log(allcookies);
 	//验证邮箱
 	var filter=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	//验证网址

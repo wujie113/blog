@@ -6,8 +6,19 @@ use app\home\model\Tp_article;
 use think\Db;
 class Blogdetail extends Tp_common{
 	//ajax请求成功后跳转的页面
-	function blogdetail($action = ''){
+	function blogdetail($action = ''){ //前端跳转传过来的值
 		$datas = new Tp_article;
+//		print_r($id);
+		if($action == 1){
+			$action ="tech";
+		}else if($action == 2){
+			$action ="life";
+		}else if($action == 3){
+			$action ="js";
+		}else if($action == 4){
+			$action ="htmlcss";
+		}
+		
 		$this->assign('maction',$action);
 		$post = Request::instance()->param();
 		$id = $post['id'];

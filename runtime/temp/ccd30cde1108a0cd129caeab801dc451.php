@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/home\view\index\index.html";i:1528361818;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528363679;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/home\view\index\index.html";i:1528444761;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528442301;}*/ ?>
 <!Doctype html>
 <html>
 <head>
@@ -72,7 +72,7 @@
 				
 				</label>
 			</span>
-			<a   rel="nofollow"  class="more-link " name="<?php echo $val['id']; ?>" onclick="browser(this,'index',1)"  >继续阅读 »</a>
+			<a   rel="nofollow"  class="more-link " name="<?php echo $val['id']; ?>" onclick="browser(this,<?php echo $val['type']; ?>,1)"  >继续阅读 »</a>
 			<p class="read">
 	  			<span >
 	  				<i class="icon iconfont icon-touxiang" ></i>
@@ -105,18 +105,16 @@
 <aside> 
 	<h2>博客分类</h2>
 	<ul>
-	  <li><a href="">慢生活( <?php echo $slowlife; ?> )</a></li>
-	  <li><a href="">程序人生(<?php echo $belles; ?>)</a></li>
-	  <li><a href="">技术探讨(<?php echo $program; ?>)</a></li>
-	  <li><a href="">html(<?php echo $html; ?>)</a></li>
+	  <li><a href="<?php echo url('Life/life'); ?>">慢生活( <?php echo $slowlife; ?> )</a></li>
+	  <li><a href="<?php echo url('Js/js'); ?>">程序人生(<?php echo $belles; ?>)</a></li>
+	  <li><a href="<?php echo url('Tech/tech'); ?>">技术探讨(<?php echo $program; ?>)</a></li>
+	  <li><a href="<?php echo url('Htmlcss/htmlcss'); ?>">Htm5lCss3(<?php echo $html; ?>)</a></li>
 	</ul>
 	<h2>近期文章</h2>
 	<ul>
-	  <li><a href=""><?php echo $val['title']; ?></a></li>
-	  <!--<li><a href="">也许下个路口就会遇见希望</a></li>
-	  <li><a href="">6月毕业季，祝福送给你</a></li>
-	  <li><a href="">生活常有缺席的-可搞笑从来不缺席</a></li>
-	  <li><a href="">为了一个不存在的梦，执念了那么多年</a></li>-->
+		<?php if(is_array($rearticle) || $rearticle instanceof \think\Collection || $rearticle instanceof \think\Paginator): $i = 0; $__LIST__ = $rearticle;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$art): $mod = ($i % 2 );++$i;?>
+			 <li><a name="<?php echo $art['id']; ?>" onclick="browser(this,<?php echo $art['type']; ?>,1)"><?php echo $art['title']; ?></a></li>
+		<?php endforeach; endif; else: echo "" ;endif; ?>
 	</ul>
 	<h2>文章归档</h2>
 	<ul>
@@ -127,49 +125,51 @@
 	<h2>网站统计</h2>
 	<ul style="color: #fff;">
 	  <li>
-	  		文章总数：<?php echo $counts; ?> 篇
+	  	文章总数：<?php echo $counts; ?> 篇
 	  </li>
 	  <li>
-	  	评论数目：106 条
+	  	评论数目：<?php echo $coment; ?> 条
 	  </li>
 	  <li>
 	  	建站日期：2016-06-01
 	  </li>
 	  <li>
-	  	运行天数：671 天
+	  	运行天数：<?php echo $day; ?> 天
 	  </li>
-	  <li>
-	  	最后更新：2018-4-3
-	  </li>
+	  <?php if(is_array($updates) || $updates instanceof \think\Collection || $updates instanceof \think\Paginator): $i = 0; $__LIST__ = $updates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$times): $mod = ($i % 2 );++$i;?>
+		  <li>
+		  	最后更新：<?php echo date('Y-m-d',$times['create_time']); ?>
+		  </li>
+	  <?php endforeach; endif; else: echo "" ;endif; ?>
 	</ul>
 </aside>  
 </article>
 <div class="blank"></div>
 <div id="copright">Design by DanceSmile</div>
-<script>
-	//点击继续阅读浏览
-	var id;
-	var index;
-	var i;
-	function browser(aa,index,i){
-		id = $(aa).attr("name");
-		index = index;
-		i = i;
-		console.log(id);
-		$.ajax({
-			type:"post",
-			url:"<?php echo url('Blogdetail/blogdetail_ajax'); ?>", //ajax请求需要的操作
-			async:true,
-			data:{'id':id},
-			success:function(data){
-				window.location.reload();
-				var data = JSON.parse(data);
-				if(data.msg == 1){
-					window.location.href = "/home/blogdetail/blogdetail/action/"+index+"/id/"+id+"/i/"+i; //页面跳转带的参数
-				}
+<script  type="text/javascript" >
+//点击继续阅读浏览
+var id;
+var index;
+var i;
+function browser(aa,index,i){
+	id = $(aa).attr("name");
+	index = index;
+	i = i;
+	console.log(id);
+	window.location.reload();
+	$.ajax({
+		type:"post",
+		url:"<?php echo url('Blogdetail/blogdetail_ajax'); ?>", //ajax请求需要的操作
+		async:true,
+		data:{'id':id},
+		success:function(data){
+			var data = JSON.parse(data);
+			if(data.msg == 1){
+				window.location.href = "/home/blogdetail/blogdetail/action/"+index+"/id/"+id+"/i/"+i; //页面跳转带的参数
 			}
-		});
-	}
+		}
+	});
+}
 function titleName(type) {
 	if (type == "tech") {
 		return "技术谈论"
@@ -191,7 +191,7 @@ $(function(){
  	});
  });
  //点赞
- var star_id;
+var star_id;
 function star(aa){
 	star_id = $(aa).attr("name");
 	$.ajax({
@@ -302,8 +302,8 @@ function determine(replay,comment){
 }
 //点击提交的时候的逻辑
 function submits(aa,comment){
-	var allcookies = document.cookie;    
-	console.log(allcookies);
+//	var allcookies = document.cookie;    
+//	console.log(allcookies);
 	//验证邮箱
 	var filter=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	//验证网址

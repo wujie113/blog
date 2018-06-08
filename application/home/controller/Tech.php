@@ -9,6 +9,7 @@ class Tech extends Tp_common{
 		$info = $action::all(['type'=>1]);
 //		$info = Db::name('article')->where(['type'=>1])->order("create_time desc")->select();
 		$this->assign('info',$info);
+//		print_r($info);
 		return view();
 	}
 	
