@@ -157,6 +157,10 @@ function determine(replay,comment){
 }
 //点击提交的时候的逻辑
 function submits(aa,comment){
+	if(!$(".vertical").is(':checked')){
+		alert('请勾选填写信息');
+		return false;
+	}
 //	var allcookies = document.cookie;    
 //	console.log(allcookies);
 	//验证邮箱

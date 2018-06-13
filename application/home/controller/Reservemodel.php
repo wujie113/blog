@@ -34,10 +34,10 @@ class Reservemodel extends Tp_common {
 			if($month==1 || $month==2 ||$month==3){ 
 			$start=strtotime(date('Y-01-01 00:00:00')); 
 			$end=strtotime(date("Y-03-31 23:59:59")); 
-		}elseif($month==4 || $month==5 ||$month==6){ 
+		}else if($month==4 || $month==5 ||$month==6){ 
 			$start=strtotime(date('Y-04-01 00:00:00')); 
 			$end=strtotime(date("Y-06-30 23:59:59")); 
-		}elseif($month==7 || $month==8 ||$month==9){ 
+		}else if($month==7 || $month==8 ||$month==9){ 
 			$start=strtotime(date('Y-07-01 00:00:00')); 
 			$end=strtotime(date("Y-09-30 23:59:59")); 
 		}else{ 

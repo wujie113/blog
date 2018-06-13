@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpStudy\WWW\blog\public/../application/blog\view\message\message.html";i:1525423665;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1527059028;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpStudy\WWW\blog\public/../application/blog\view\message\message.html";i:1528712337;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1528771347;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
 <!Doctype html>
 <html lang="zh-CN">
 <head>
@@ -42,10 +42,10 @@
             	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             		admin <span class="caret"></span>
             	</a>
-              <ul class="dropdown-menu dropdown-menu-left">
-             <!--   <li><a title="查看或修改个人信息" data-toggle="modal" data-target="#seeUserInfo">个人信息</a></li>-->
-                <!--<li><a title="查看您的登录记录" data-toggle="modal" data-target="#seeUserLoginlog" href="" >登录记录</a></li>-->
-              </ul>
+              <!--<ul class="dropdown-menu dropdown-menu-left">
+                <li><a title="查看或修改个人信息" data-toggle="modal" data-target="#seeUserInfo">个人信息</a></li>
+                <li><a title="查看您的登录记录" data-toggle="modal" data-target="#seeUserLoginlog" href="" >登录记录</a></li>
+              </ul>-->
             </li>
             <li><a href="<?php echo url('Login/login'); ?>" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
             <li><a href="<?php echo url('Register/register'); ?>" >注册</a></li>
@@ -96,15 +96,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><label>1</label></td>
-        <td class="article-title">润润</td>
-        <td>271886954@163.com</td>
-        <td>www.baidu.com</td>
-        <td>2018-05-01</td>
-        <td class="article-title">这是留言内容摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-        <td><a rel="1" name="see" href="<?php echo url('Message/message_detail',array('action'=>'message')); ?>" >查看</a> <a rel="1" name="delete">删除</a></td>
-      </tr>
+    	<?php if(is_array($info) || $info instanceof \think\Collection || $info instanceof \think\Paginator): $i = 0; $__LIST__ = $info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?>
+		 <tr>
+	        <td><label><?php echo $val['id']; ?></label></td>
+	        <td class="article-title"><?php echo $val['name']; ?></td>
+	        <td><?php echo $val['email']; ?></td>
+	        <td><?php echo $val['website']; ?></td>
+	        <td><?php echo $val['create_time']; ?></td>
+	        <td class="article-title"><?php echo $val['content']; ?></td>
+	        <td><a rel="<?php echo $val['id']; ?>" name="see" href="<?php echo url('Message/message_detail',array('action'=>'message','id'=>$val['id'])); ?>" >查看</a> 
+	        	<a rel="1" name="delete" onClick="return confirm('确定要删除吗?')" href="<?php echo url('Message/message_dele',array('action'=>'article','id'=>$val['id'])); ?>">删除</a>
+	        </td>
+	      </tr>
+    	<?php endforeach; endif; else: echo "" ;endif; ?>
       
     </tbody>
   </table>

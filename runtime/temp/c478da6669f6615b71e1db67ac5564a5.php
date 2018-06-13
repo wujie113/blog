@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpStudy\WWW\blog\public/../application/blog\view\comment\comment.html";i:1525417401;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1527059028;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpStudy\WWW\blog\public/../application/blog\view\comment\comment.html";i:1528710434;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1528771347;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
 <!Doctype html>
 <html lang="zh-CN">
 <head>
@@ -42,10 +42,10 @@
             	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             		admin <span class="caret"></span>
             	</a>
-              <ul class="dropdown-menu dropdown-menu-left">
-             <!--   <li><a title="查看或修改个人信息" data-toggle="modal" data-target="#seeUserInfo">个人信息</a></li>-->
-                <!--<li><a title="查看您的登录记录" data-toggle="modal" data-target="#seeUserLoginlog" href="" >登录记录</a></li>-->
-              </ul>
+              <!--<ul class="dropdown-menu dropdown-menu-left">
+                <li><a title="查看或修改个人信息" data-toggle="modal" data-target="#seeUserInfo">个人信息</a></li>
+                <li><a title="查看您的登录记录" data-toggle="modal" data-target="#seeUserLoginlog" href="" >登录记录</a></li>
+              </ul>-->
             </li>
             <li><a href="<?php echo url('Login/login'); ?>" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
             <li><a href="<?php echo url('Register/register'); ?>" >注册</a></li>
@@ -81,48 +81,64 @@
     </aside>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
 
-<form action="/Comment/checkAll" method="post">
-        <h1 class="page-header">管理 <span class="badge">4</span></h1>
-        <div class="table-responsive">
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">标题</span></th>
-                <th><span class="glyphicon glyphicon-th-large"></span> <span class="visible-lg">评论内容</span></th>
-                <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">日期</span></th>
-                <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>女孩都有浪漫的小情怀</td>
-                <td class="article-title">这是测试评论摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-                <td>2015-12-03</td>
-                <td><a rel="2" name="see" href="<?php echo url('Comment/comment_detail',array('action'=>'comment')); ?>"  >查看</a> 
-                	<a rel="2" name="delete">删除</a>
-                </td>
-              </tr>
-              <tr>
-                <td>女孩都有浪漫的小情怀</td>
-                <td class="article-title">这是测试评论摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-                <td>2015-12-03</td>
-                <td><a rel="2" name="see" href="<?php echo url('Comment/comment_detail',array('action'=>'comment')); ?>"  >查看</a> 
-                	<a rel="2" name="delete">删除</a>
-                </td>
-              </tr>
-              <tr>
-               <td>女孩都有浪漫的小情怀</td>
-                <td class="article-title">这是测试评论摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-                <td>2015-12-03</td>
-                <td><a rel="2" name="see" href="<?php echo url('Comment/comment_detail',array('action'=>'comment')); ?>"  >查看</a> 
-                	<a rel="2" name="delete">删除</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-      </form>
+    <h1 class="page-header">管理 <span class="badge">4</span></h1>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">标题</span></th>
+            <th><span class="glyphicon glyphicon-th-large"></span> <span class="visible-lg">评论内容</span></th>
+            <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">日期</span></th>
+            <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span></th>
+          </tr>
+        </thead>
+        <tbody>
+      	<?php if(is_array($info) || $info instanceof \think\Collection || $info instanceof \think\Paginator): $i = 0; $__LIST__ = $info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?>
+          <tr>
+            <td><?php echo $val['title']; ?></td>
+            <td class="article-title"><?php echo $val['content']; ?></td>
+            <td><?php echo date('Y-m-d',$val['create_time']); ?></td>
+            <!--href="<?php echo url('Comment/comment_detail',array('action'=>'comment')); ?>"-->
+            <td><a rel="<?php echo $val['id']; ?>" name="see"  class="see" onclick="see(this)"  >查看</a> 
+            	<a rel="<?php echo $val['id']; ?>" name="delete" class="deletes" onclick="deletes(this)">删除</a>
+            </td>
+          </tr>
+         <?php endforeach; endif; else: echo "" ;endif; ?>
+        </tbody>
+      </table>
+    </div>
+<script type="text/javascript">
+	//点击查看
+	function see(comments ){
+		var id =  $(comments).attr("rel");
+		var index = "comment";
+		$.ajax({
+			type:"post",
+			url:"<?php echo url('Comment/comment_detail'); ?>",
+			async:true,
+			data:{"id":id},
+			success:function(data){
+					window.location.href = "/blog/comment/comment_detail/action/"+index+"/id/"+id; //页面跳转带的参数
+			}
+		});
+	}
+	//删除
+	function deletes(del){
+		var id =  $(del).attr("rel");
+		if(!confirm('确定要删除吗?')){
+			return false;
+		};
+		$.ajax({
+			type:"post",
+			url:"<?php echo url('Comment/comment_delet'); ?>",
+			async:true,
+			data:{"id":id},
+			success:function(data){
+					window.location.reload();
+			}
+		});
+	}
+</script>
       
 </div>
   </div>

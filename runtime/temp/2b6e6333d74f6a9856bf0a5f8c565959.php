@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/home\view\about\about.html";i:1524820094;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528685558;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:75:"D:\phpStudy\WWW\blog\public/../application/home\view\classify\classify.html";i:1528883351;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528685558;}*/ ?>
 <!Doctype html>
 <html>
 <head>
@@ -54,30 +54,55 @@
 <div class="blank"></div>
 <article >
 
-<div class="about" >
-	<h2>你现在的位置:&nbsp;>&nbsp;<span>关于我</span></h2>
-	<hr  size="1px"  color="#D2CCC9" style="margin-top: 15px;" />
-</div>
-<aside> 
-	<h2  class="ab_title" >
-		关于我
-	</h2>
-	<div style="width: 100px;height: 100px;border-radius: 50%;overflow: hidden;text-align: center;margin-left: 22px;">
-		<img src="__PUBLIC__/images/2011713203720633.jpg" style="width: 100px;height: 100px;" />
-	</div>
-	<div style="line-height: 30px;padding: 20px;">
-		<p>网名：含灵 | 伍洁</p>
-		<p>职业：Web前端工程师</p>
-		<p>个人微信 ：Web前端工程师</p>
-		<p>邮箱：Web前端工程师</p>
-	</div>
-	<h2  class="ab_title" >
-		官方微信
-	</h2>
-	<div>
-		<img src="" />
-	</div>
-</aside>  
+ <div class="blog">
+<!-- blog list begin-->
+	 <?php if(is_array($info) || $info instanceof \think\Collection || $info instanceof \think\Paginator): $i = 0; $__LIST__ = $info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?>
+	  <div class="blog-div" >
+	  	<h2><a href="#"><?php echo $val['title']; ?></a></h2>
+	  	<p >
+	  		<?php echo date('Y-m-d',$val['create_time']); ?>
+	  	</p>
+	  	<a class="topimg"  >
+			<img src="<?php echo $val['titlepic']; ?>"  >
+		</a>
+		<label class="lable_content" >
+			<span class="words">
+				<label>
+				<?php echo $val['content']; ?>
+				
+				</label>
+			</span>
+			<a   rel="nofollow"  class="more-link " name="<?php echo $val['id']; ?>" onclick="browser(this,<?php echo $val['type']; ?>,1)"  >继续阅读 »</a>
+			<p class="read">
+	  			<span >
+	  				<i class="icon iconfont icon-touxiang" ></i>
+	     			<span>伍洁</span>
+	  			</span>
+	  			<span >
+	  				<i class="icon iconfont icon-huiyishiqueren_huabanfuben" ></i>
+	     			<span>
+	     				<?php echo date('Y-m-d',$val['update_time']); ?>
+	     				<!--<?php echo $val['update_time']; ?>-->
+	     			</span>
+	  			</span>
+	  			<span >
+	  				<i class="icon iconfont icon-liulan" ></i>
+	     			<span><?php echo $val['browser']; ?>浏览</span>
+	  			</span>
+	  			<span  >
+	  				<a href="javascript:;" class="thumbs-up  star" name="<?php echo $val['id']; ?>" onclick="star(this)" >
+	  					<i class="icon iconfont icon-buoumaotubiao16" ></i>
+	     				<span><?php echo $val['star']; ?>个赞</span>
+	  				</a>
+	  			</span>
+	  		</p>
+		</label>
+	 </div>
+<?php endforeach; endif; else: echo "" ;endif; ?>
+ <!-- blog list end-->
+ 
+
+  </div>
 </article>
 <div class="blank"></div>
 <div id="copright">Design by DanceSmile</div>

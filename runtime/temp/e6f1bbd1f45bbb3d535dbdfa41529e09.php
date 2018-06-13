@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:80:"D:\phpStudy\WWW\blog\public/../application/blog\view\message\message_detail.html";i:1525423708;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1527059028;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:80:"D:\phpStudy\WWW\blog\public/../application/blog\view\message\message_detail.html";i:1528712096;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1527059028;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
 <!Doctype html>
 <html lang="zh-CN">
 <head>
@@ -83,10 +83,11 @@
 
 <h1 class="page-header">留言 内容</h1>
 <div class="table-responsive">
+	<?php if(is_array($info) || $info instanceof \think\Collection || $info instanceof \think\Paginator): $i = 0; $__LIST__ = $info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?>
   <p>
-  	gkjptrgtporkgprtkgkjptrgtporkgprtkgkjptrgtporkgprtkgkjptrgtporkgprtk
-  	gkjptrgtporkgprtkgkjptrgtporkgprtkgkjptrgtporkgprtkgkjptrgtporkgprtk
+  	<?php echo $val['content']; ?>
   </p>
+  <?php endforeach; endif; else: echo "" ;endif; ?>
 </div>
        
 </div>

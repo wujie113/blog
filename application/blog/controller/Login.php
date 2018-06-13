@@ -4,6 +4,8 @@ use app\blog\model\Tp_common;
 use app\blog\model\Tp_user as Users;
 use think\Db;
 use think\Model;
+use think\Request;
+use app\blog\model\Tp_loglogin as Loglogin;
 class Login extends Tp_common{
 	public function __construct(){
 		parent::__construct();
@@ -26,6 +28,11 @@ class Login extends Tp_common{
 		}
 		$row = Db::name('user')->where(array('user_name'=>$name))->find();
 		if($row['pass_word'] == $_password){
+			$request = Request::instance();
+			$ip = $request->ip();
+			$time = time();
+			$date = ['ip'=>$ip,'create_time'=>$time];
+			$this->login_log($date);
 			$this->success('登录成功','/blog/index/index');
 		}else{
 			$this->error('密码错误，请重新输入!');
@@ -36,7 +43,10 @@ class Login extends Tp_common{
 	function login(){
 		return view();
 	}
-	
+	private function login_log($arr){
+		$signlog = new Loglogin($arr);
+		$signlog->save();
+	}
 	
 }
 ?>

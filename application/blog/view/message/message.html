@@ -14,15 +14,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><label>1</label></td>
-        <td class="article-title">润润</td>
-        <td>271886954@163.com</td>
-        <td>www.baidu.com</td>
-        <td>2018-05-01</td>
-        <td class="article-title">这是留言内容摘要这是测试评论摘要这是测试评论摘要这是测试评论摘要...</td>
-        <td><a rel="1" name="see" href="{:url('Message/message_detail',array('action'=>'message'))}" >查看</a> <a rel="1" name="delete">删除</a></td>
-      </tr>
+    	<volist name='info' id='val' >
+		 <tr>
+	        <td><label>{$val.id}</label></td>
+	        <td class="article-title">{$val.name}</td>
+	        <td>{$val.email}</td>
+	        <td>{$val.website}</td>
+	        <td>{$val.create_time}</td>
+	        <td class="article-title">{$val.content}</td>
+	        <td><a rel="{$val.id}" name="see" href="{:url('Message/message_detail',array('action'=>'message','id'=>$val.id))}" >查看</a> 
+	        	<a rel="1" name="delete" onClick="return confirm('确定要删除吗?')" href="{:url('Message/message_dele',array('action'=>'article','id'=>$val.id))}">删除</a>
+	        </td>
+	      </tr>
+    	</volist>
       
     </tbody>
   </table>

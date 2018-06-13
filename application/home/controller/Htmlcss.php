@@ -6,7 +6,7 @@ use think\Db;
 class Htmlcss extends Tp_common{
 	function htmlcss(Tp_article $action){
 //		$info = $action::all(['type'=>4]);
-		$info = Db::name('article')->where(['type'=>4])->order("create_time desc")->select();
+		$info = Db::name('article')->where(['type'=>4,'status'=>1])->order("create_time desc")->select();
 		$this->assign('info',$info);
 		return view();
 	}

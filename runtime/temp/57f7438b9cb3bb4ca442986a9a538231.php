@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:63:"D:\phpStudy\WWW\blog\public/../application/home\view\js\js.html";i:1528442839;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528442301;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:63:"D:\phpStudy\WWW\blog\public/../application/home\view\js\js.html";i:1528442839;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528685558;}*/ ?>
 <!Doctype html>
 <html>
 <head>
@@ -272,6 +272,10 @@ function determine(replay,comment){
 }
 //点击提交的时候的逻辑
 function submits(aa,comment){
+	if(!$(".vertical").is(':checked')){
+		alert('请勾选填写信息');
+		return false;
+	}
 //	var allcookies = document.cookie;    
 //	console.log(allcookies);
 	//验证邮箱

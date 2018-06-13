@@ -6,7 +6,7 @@ use think\Db;
 class Tech extends Tp_common{
 	function tech(){
 		$action = new Tp_article;
-		$info = $action::all(['type'=>1]);
+		$info = $action::all(['type'=>1,'status'=>1]);
 //		$info = Db::name('article')->where(['type'=>1])->order("create_time desc")->select();
 		$this->assign('info',$info);
 //		print_r($info);

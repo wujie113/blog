@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/blog\view\index\index.html";i:1525423832;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1527059028;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/blog\view\index\index.html";i:1528770838;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1528771347;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
 <!Doctype html>
 <html lang="zh-CN">
 <head>
@@ -42,10 +42,10 @@
             	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             		admin <span class="caret"></span>
             	</a>
-              <ul class="dropdown-menu dropdown-menu-left">
-             <!--   <li><a title="查看或修改个人信息" data-toggle="modal" data-target="#seeUserInfo">个人信息</a></li>-->
-                <!--<li><a title="查看您的登录记录" data-toggle="modal" data-target="#seeUserLoginlog" href="" >登录记录</a></li>-->
-              </ul>
+              <!--<ul class="dropdown-menu dropdown-menu-left">
+                <li><a title="查看或修改个人信息" data-toggle="modal" data-target="#seeUserInfo">个人信息</a></li>
+                <li><a title="查看您的登录记录" data-toggle="modal" data-target="#seeUserLoginlog" href="" >登录记录</a></li>
+              </ul>-->
             </li>
             <li><a href="<?php echo url('Login/login'); ?>" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
             <li><a href="<?php echo url('Register/register'); ?>" >注册</a></li>
@@ -85,21 +85,22 @@
   <div class="row placeholders">
     <div class="col-xs-6 col-sm-3 placeholder">
       <h4>文章</h4>
-      <span class="text-muted">0 条</span> 
+      <span class="text-muted"><?php echo $art_count; ?> 条</span> 
     </div>
     <div class="col-xs-6 col-sm-3 placeholder">
       <h4>评论</h4>
-      <span class="text-muted">0 条</span> 
+      <span class="text-muted"><?php echo $com_count; ?>条</span> 
     </div>
     <div class="col-xs-6 col-sm-3 placeholder">
-      <h4>友链</h4>
-      <span class="text-muted">0 条</span>
+      <h4>留言</h4>
+      <span class="text-muted"><?php echo $mes_count; ?> 条</span>
     </div>
     <div class="col-xs-6 col-sm-3 placeholder">
       <h4>访问量</h4>
       <span class="text-muted">0</span> 
     </div>
   </div>
+
   <h1 class="page-header">状态</h1>
   <div class="table-responsive">
     <table class="table table-striped table-hover">

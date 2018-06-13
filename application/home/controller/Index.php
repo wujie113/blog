@@ -9,6 +9,7 @@ class Index extends Tp_common{
 //		$info = $action::all(['status'=>1]);
 //				print_r($info);
 		$info = Db::name('article')->where(['status'=>1])->order("create_time desc")->select();
+//		print_r($info);
 		$this->assign('info',$info);
 		$conts =   Db::table('tp_article')->where(['status'=>1])->count();//获取显示的文章总篇数
 		$slowlife = Db::table('tp_article')->where(['status'=>1,'type'=>2])->count(); //慢生活显示的总数
@@ -30,8 +31,16 @@ class Index extends Tp_common{
 		$this->assign('program',$program);
 		$this->assign('belles',$belles);
 		$this->assign('html',$html);
+		//时间戳转换成年月
+		$time_type = Db::name('article')->where(['status'=>1])->order("create_time desc")->select();
+		foreach($time_type as $key=>$val){
+			$arr[] = date('Y-m',$val['create_time']);
+		}
+		$arr = array_unique($arr);  //数组去重
+//		$date="2018-05-02";
+//		dump(strtotime($date)); //=>1380601394
+		$this->assign('time_type',$arr);
 //		$last_time = Db::table('tp_article')->where(['status'=>1])->setField('update_time',time());
-//		print_r($last_time) ;
 //		$result = $Borrow->where($condition)->setField('sdate',time());
 //		echo $conts;	
 //		print_r($info);

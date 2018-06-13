@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/home\view\index\index.html";i:1528444761;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528442301;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/home\view\index\index.html";i:1528879303;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528685558;}*/ ?>
 <!Doctype html>
 <html>
 <head>
@@ -82,6 +82,7 @@
 	  				<i class="icon iconfont icon-huiyishiqueren_huabanfuben" ></i>
 	     			<span>
 	     				<?php echo date('Y-m-d',$val['update_time']); ?>
+	     				<!--<?php echo $val['update_time']; ?>-->
 	     			</span>
 	  			</span>
 	  			<span >
@@ -118,9 +119,9 @@
 	</ul>
 	<h2>文章归档</h2>
 	<ul>
-	  <li><a href="">2018 年一月</a></li>
-	  <li><a href="">2018 年二月</a></li>
-	  <li><a href="">2018 年三月</a></li>
+		<?php if(is_array($time_type) || $time_type instanceof \think\Collection || $time_type instanceof \think\Paginator): $i = 0; $__LIST__ = $time_type;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vals): $mod = ($i % 2 );++$i;?>
+		  <li><a href="<?php echo url('Classify/classify',array('type'=>$vals)); ?>"><?php echo $vals; ?></a></li>
+	  <?php endforeach; endif; else: echo "" ;endif; ?>
 	</ul>
 	<h2>网站统计</h2>
 	<ul style="color: #fff;">
@@ -302,6 +303,10 @@ function determine(replay,comment){
 }
 //点击提交的时候的逻辑
 function submits(aa,comment){
+	if(!$(".vertical").is(':checked')){
+		alert('请勾选填写信息');
+		return false;
+	}
 //	var allcookies = document.cookie;    
 //	console.log(allcookies);
 	//验证邮箱
