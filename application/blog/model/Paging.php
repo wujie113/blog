@@ -38,7 +38,7 @@ class Paging extends Controller
         $lim = $this->fylist();
 
         return [
-            'info'  =>  $this->list,
+            'info'  =>  $this->list, //数据存贮在info里面
             'fenye' =>  $lim,
             'page'  =>  $this->page,
             'zys'   =>  $this->yeshu,

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/home\view\index\index.html";i:1528879303;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528685558;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/home\view\index\index.html";i:1529050195;s:64:"D:\phpStudy\WWW\blog\public/../application/home\view\layout.html";i:1524816741;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\header.html";i:1525920965;s:71:"D:\phpStudy\WWW\blog\public/../application/home\view\public\footer.html";i:1528685558;}*/ ?>
 <!Doctype html>
 <html>
 <head>
@@ -60,7 +60,7 @@
 	  <div class="blog-div" >
 	  	<h2><a href="#"><?php echo $val['title']; ?></a></h2>
 	  	<p >
-	  		<?php echo date('Y-m-d',$val['create_time']); ?>
+	  		<?php echo date('Y-m-d',$val['update_time']); ?>
 	  	</p>
 	  	<a class="topimg"  >
 			<img src="<?php echo $val['titlepic']; ?>"  >
@@ -81,7 +81,7 @@
 	  			<span >
 	  				<i class="icon iconfont icon-huiyishiqueren_huabanfuben" ></i>
 	     			<span>
-	     				<?php echo date('Y-m-d',$val['update_time']); ?>
+	     				<?php echo $val['create_time']; ?>天
 	     				<!--<?php echo $val['update_time']; ?>-->
 	     			</span>
 	  			</span>

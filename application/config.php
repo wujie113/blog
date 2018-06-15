@@ -242,4 +242,15 @@ return [
 //	'url_route_on' => true,
 //	'log' => ['type' => 'trace'],
 //	'template' => ['layout_on' => true,'layout_name'=>'layout'],
+
+//发送电子邮件
+	'MAIL_HOST' =>'smtp.qq.com',//smtp服务器的名称
+    'MAIL_SMTPAUTH' =>TRUE, //启用smtp认证
+    'MAIL_USERNAME' =>'834427188@qq.com',//你的邮箱名
+    'MAIL_FROM' =>'834427188@qq.com',//发件人地址
+    'MAIL_FROMNAME'=>'我我青年',//发件人姓名
+    //（如果qq邮箱设置了独立密码就写独立密码
+    'MAIL_PASSWORD' =>'wujie1995113',//邮箱密码
+    'MAIL_CHARSET' =>'utf-8',//设置邮件编码
+    'MAIL_ISHTML' =>TRUE, // 是否HTML格式邮件
 ];

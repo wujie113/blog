@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:75:"D:\phpStudy\WWW\blog\public/../application/blog\view\loginlog\loginlog.html";i:1525775585;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1528771347;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:75:"D:\phpStudy\WWW\blog\public/../application/blog\view\loginlog\loginlog.html";i:1529048123;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1529047497;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
 <!Doctype html>
 <html lang="zh-CN">
 <head>
@@ -40,7 +40,7 @@
             </li>
             <li class="dropdown">
             	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            		admin <span class="caret"></span>
+            		<?php echo \think\Session::get('erp_user'); ?> <span class="caret"></span>
             	</a>
               <!--<ul class="dropdown-menu dropdown-menu-left">
                 <li><a title="查看或修改个人信息" data-toggle="modal" data-target="#seeUserInfo">个人信息</a></li>
@@ -93,7 +93,7 @@
         <th><span class="glyphicon glyphicon-th-large"></span> <span class="visible-lg">ID</span></th>
         <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">时间</span></th>
         <th><span class="glyphicon glyphicon-adjust"></span> <span class="visible-lg">IP</span></th>
-        <th><span class="glyphicon glyphicon-remove"></span> <span class="visible-lg">操作</span></th>
+        <!--<th><span class="glyphicon glyphicon-remove"></span> <span class="visible-lg">操作</span></th>-->
       </tr>
     </thead>
     <tbody>
@@ -107,7 +107,7 @@
         <td><?php echo $val['create_time']; ?></td>
        
         <td><?php echo $val['ip']; ?></td>
-        <td><a rel="" class="del" name="<?php echo $val['id']; ?>"    >删除</a></td>
+        <!--<td><a rel="" class="del" name="<?php echo $val['id']; ?>"    >删除</a></td>-->
       </tr>
      <?php endforeach; endif; else: echo "" ;endif; ?>
      

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/blog\view\index\index.html";i:1528770838;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1528771347;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:69:"D:\phpStudy\WWW\blog\public/../application/blog\view\index\index.html";i:1529044629;s:64:"D:\phpStudy\WWW\blog\public/../application/blog\view\layout.html";i:1524725738;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\header.html";i:1529047497;s:71:"D:\phpStudy\WWW\blog\public/../application/blog\view\public\footer.html";i:1525423092;}*/ ?>
 <!Doctype html>
 <html lang="zh-CN">
 <head>
@@ -40,7 +40,7 @@
             </li>
             <li class="dropdown">
             	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            		admin <span class="caret"></span>
+            		<?php echo \think\Session::get('erp_user'); ?> <span class="caret"></span>
             	</a>
               <!--<ul class="dropdown-menu dropdown-menu-left">
                 <li><a title="查看或修改个人信息" data-toggle="modal" data-target="#seeUserInfo">个人信息</a></li>
@@ -97,11 +97,11 @@
     </div>
     <div class="col-xs-6 col-sm-3 placeholder">
       <h4>访问量</h4>
-      <span class="text-muted">0</span> 
+      <span class="text-muted"><?php echo $visit_count; ?></span> 
     </div>
   </div>
 
-  <h1 class="page-header">状态</h1>
+  <!--<h1 class="page-header">状态</h1>
   <div class="table-responsive">
     <table class="table table-striped table-hover">
       <tbody>
@@ -113,7 +113,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div>-->
   <h1 class="page-header">系统信息</h1>
   <div class="table-responsive">
     <table class="table table-striped table-hover">
@@ -129,7 +129,7 @@
         </tr>
         <tr>
           <td>浏览器:</td>
-          <td>Chrome47</td>
+          <td><?php echo $browser; ?></td>
           <td>PHP版本:</td>
           <td>5.6.1</td>
         </tr>
@@ -164,7 +164,7 @@
     </table>
   </div>
   <footer>
-    <h1 class="page-header">程序信息</h1>
+    <!--<h1 class="page-header">程序信息</h1>
     <div class="table-responsive">
     <table class="table table-striped table-hover">
       <tbody>
@@ -176,7 +176,7 @@
         </tr>
       </tbody>
     </table>
-    </div>
+    </div>-->
   </footer>
 </div>
   </div>
