@@ -6,7 +6,7 @@ use think\Db;
 use think\Model;
 use think\Request;
 use think\Session;
-use app\blog\model\Tp_loglogin as Loglogin;
+//use app\blog\model\Tp_loglogin as Loglogin;
 class Login extends Controller{
 	public function __construct(){
 		parent::__construct();

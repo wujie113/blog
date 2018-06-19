@@ -4,6 +4,7 @@ use app\home\model\Tp_common;
 use app\home\model\Tp_article;
 use think\Db;
 use think\Request;
+use app\home\model\Tp_loglogin as Loglogin;
 class Index extends Tp_common{
 	function index (){
 		$request = Request::instance();
@@ -82,7 +83,7 @@ class Index extends Tp_common{
 		$signlog = new Loglogin($arr);
 		$signlog->save();
 	}
-	
+//	
 	
 	
 }
